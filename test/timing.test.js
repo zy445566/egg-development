@@ -41,18 +41,18 @@ describe('test/timing.test.js', () => {
 
     let json = res.text.match(/data = (.*?);/);
     json = JSON.parse(json[1]);
-    assert(json.length === 102);
+    assert(json.length === 123);
 
     const first = json[0];
     assert(first.type === 'agent');
     assert(typeof first.pid === 'string');
     assert.deepEqual(first.range, [ first.start, first.end ]);
     assert(first.title === 'agent(0)');
-
+    
     const last = json[json.length - 1];
     assert(/^app_\d+$/.test(last.type));
     assert(typeof last.pid === 'string');
     assert.deepEqual(last.range, [ last.start, last.end ]);
-    assert(/^app_\d+\(65\)$/.test(last.title));
+    assert(/^app_\d+\(78\)$/.test(last.title));
   });
 });

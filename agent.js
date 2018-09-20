@@ -42,17 +42,16 @@ module.exports = agent => {
     }
   });
 
-  // add simple lifecycle beforeReload 
+  // add simple lifecycle beforeReload
   const scopeList = [];
-  agent.beforeReload = async function (scope) {
+  agent.beforeReload = async function(scope) {
     scopeList.push(scope);
-  }
+  };
 
   // run lifecycle beforeReload function
-  async function runBeforeReloadFunc()
-  {
+  async function runBeforeReloadFunc() {
     for (const scope of scopeList) {
-        await scope();
+      await scope();
     }
   }
 
